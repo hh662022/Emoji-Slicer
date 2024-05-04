@@ -1,7 +1,6 @@
 # Emoji-Slicer
 <a href='https://saumya-07.github.io/Fruit-Slicer/'>Check out Live Preview</a></br></br>
- 
-A fun emoji slicing game🍉,</br>
+A fun emoji-slicing game,</br>
 ◾ as you slice the emoji 🗡 , it explodes 🤺 and produces sound of sword 🔊 </br>
 ◾ each emoji drops at a different speed, some fast some slow </br>
 ◾ slicing each emoji earns you a point, score increases by one ➕ <strong>1</strong> </br>

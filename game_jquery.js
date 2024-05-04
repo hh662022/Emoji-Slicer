@@ -6,7 +6,7 @@ var action;//for settime interval
 var fruits = ['1','2','3','4','5','6','7','8','9','10'];//for fruits
 var audio1 = new Audio("audio/knife1.mp3");
 var audio2 = new Audio("audio/knife2.mp3");
-var emojis = ['1','2','3','4','5','6','7','8','9','10'];//for emojis
+var emojis = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'];//for emojis
 
 $(function(){
     //click on start or reset button

@@ -20,6 +20,8 @@ html{
 .fruit {
     width: 100px;
     height: 100px; 
+    display: none;
+    position: absolute;
 }
 
 #front{
@@ -67,10 +69,6 @@ html{
 }
 
 
-.fruit{
-    display: none;
-    position: absolute;
-}
 #score{
     display: none;
     

@@ -3,7 +3,7 @@ var score;
 var trialsleft;
 var step;//for random steps
 var action;//for settime interval
-var fruits = ['1','2','3','4','5','6','7','8','9','10'];//for fruits
+var emojis = ['1','2','3','4','5','6','7','8','9','10'];//for emojis
 
 $(function(){
     //click on start or reset button
@@ -38,21 +38,21 @@ $(function(){
             startAction();
         }
     });
-        //slice a fruit
-        $("#fruit1").mouseover(function () { 
+        //slice a emoji
+        $("#emoji1").mouseover(function () { 
             score++;// increase score
             $("#scoreValue").html(score);
 
             //play sound
             $("#slicesound")[0].play();
 
-            //stop fruit
+            //stop emoji
             clearInterval(action);
 
-            //hide fruit
-            $('#fruit1').hide("explode",500);//slice fruit
+            //hide emoji
+            $('#emoji1').hide("explode",500);//slice emoji
 
-            //send new fruit
+            //send new emoji
             setTimeout(startAction,500);
         });
      
@@ -69,34 +69,34 @@ $(function(){
 
   //start action
   function startAction(){
-      //generate random fruit
-      $('#fruit1').show();
+      //generate random emoji
+      $('#emoji1').show();
 
-      //choose random fruit
+      //choose random emoji
       chooseRandom();
       //random position
-      $('#fruit1').css({
+      $('#emoji1').css({
           'left': Math.round(550 * Math.random()),
           'top': -50
       });
       //generate random step
       step=1 + Math.round(5 * Math.random());//change steps
-      //descend fruits down by 10ms
+      //descend emojis down by 10ms
       action = setInterval(function(){
-          //move fruit by one step
-          $('#fruit1').css('top', $('#fruit1').position().top + step);
+          //move emoji by one step
+          $('#emoji1').css('top', $('#emoji1').position().top + step);
 
-          //check if the fruit is too low
-          if($('#fruit1').position().top > $('#fruitcontainer').height()-50){
+          //check if the emoji is too low
+          if($('#emoji1').position().top > $('#emojicontainer').height()-50){
               //yes it is low
               // check trails left
               if(trialsleft > 1){
-                  //generate a fruit
-                  $("#fruit1").show();
-                  //choose random fruit
+                  //generate a emoji
+                  $("#emoji1").show();
+                  //choose random emoji
                   chooseRandom();
                   //random position
-                  $('#fruit1').css({
+                  $('#emoji1').css({
                       'left': Math.round(550 * Math.random()),
                       'top': -50
                   });
@@ -123,16 +123,16 @@ $(function(){
   }
 
  
-  //choose random fruits
+  //choose random emojis
   function chooseRandom(){
-      $('#fruit1').attr('src','images/' + fruits[Math.round(9*Math.random())]+'.png');
+      $('#emoji1').attr('src','images/' + emojis[Math.round(9*Math.random())]+'.png');
   }
 
  
    // Stop Action
    function stopAction(){
     clearInterval(action);
-    $('#fruit1').hide();
+    $('#emoji1').hide();
 }
 
 

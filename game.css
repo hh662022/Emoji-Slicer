@@ -17,6 +17,11 @@ html{
     /* backdrop-filter: blur(10px); */
 }
 
+.fruit {
+    width: 100px;
+    height: 100px; 
+}
+
 #front{
     font-size: 40px;
     color: #d3901d;

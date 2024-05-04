@@ -4,6 +4,8 @@ var trialsleft;
 var step;//for random steps
 var action;//for settime interval
 var fruits = ['1','2','3','4','5','6','7','8','9','10'];//for fruits
+var audio1 = new Audio("audio/knife1.mp3");
+var audio2 = new Audio("audio/knife2.mp3");
 
 $(function(){
     //click on start or reset button
@@ -44,7 +46,8 @@ $(function(){
             $("#scoreValue").html(score);
 
             //play sound
-            $("#slicesound")[0].play();
+            if(score % 2) audio1.play();
+            else audio2.play();
 
             //stop fruit
             clearInterval(action);

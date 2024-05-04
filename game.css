@@ -43,7 +43,7 @@ html{
     border-radius: 20px;
     box-shadow: 0px 4px 0px 0px #775012;
 }
-#fruitcontainer{
+#emojicontainer{
     background: url(./images/wood-bg2.jpg) ;
     background-size: cover;
     width: 650px;
@@ -62,7 +62,7 @@ html{
 }
 
 
-.fruit{
+.emoji{
     display: none;
     position: absolute;
 }
@@ -110,6 +110,12 @@ html{
     /* height: 26px; */
     padding-right: 5px;
 }
+
+.emoji {
+    width: 100px;
+    height: 100px; 
+}
+
 
 #startReset{
     position: relative;

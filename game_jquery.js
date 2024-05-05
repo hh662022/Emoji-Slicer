@@ -95,7 +95,7 @@ $(function(){
     function showJuice(color) {
         
         var juice = $('<div class="juice"></div>').css({
-            'background-color': red,
+            //'background-color': red,
             
             'background-image': 'url(' + imagePath + ')', // 设置背景图像
             'background-size': 'cover', // 以 cover 方式填充背景

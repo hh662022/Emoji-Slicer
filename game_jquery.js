@@ -11,7 +11,9 @@ const MAXSCORE = 999999;
 const EMOJINUM = 16;
 const BOMBTYPE = 16;
 var emojiScore = [10, 10, 5, 5, 1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, 0] 
-var juiceColors = ['#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000','#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000'];
+var juiceColors = ["images/splash-brown.png", "images/splash-red.png", "images/splash-red.png","images/splash-red.png","images/splash-yellow.png",
+                   "images/splash-yellow.png","images/splash-yellow.png","images/splash-yellow.png","images/splash-yellow.png","images/splash-yellow.png",
+                   "images/splash-yellow.png","images/splash-yellow.png","images/splash-yellow.png","images/splash-yellow.png","images/splash-yellow.png"];
 
 
 $(function(){
@@ -94,13 +96,15 @@ $(function(){
         
         var juice = $('<div class="juice"></div>').css({
             'background-color': color,
+            
+            'background-image': 'url(' + imagePath + ')', // 设置背景图像
+            'background-size': 'cover', // 以 cover 方式填充背景
             'position': 'absolute',
             'left': $('#emoji1').offset().left,
             'top': $('#emoji1').offset().top,
-            'width': '50px', 
-            'height': '50px', 
-            'border-radius': '50%', // 圆形
-            'z-index': '1' // juice位于 emoji 下方
+            'width': '50px', // 汁液宽度
+            'height': '50px', // 汁液高度
+            'z-index': '1' // 确保汁液位于 emoji 下方
         });
     
         

@@ -9,7 +9,8 @@ var emojis = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15',
 var emojiType;
 const MAXSCORE = 999999;
 const EMOJINUM = 16;
-var emojiScore = [10, 10, 5, 5, 1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, -MAXSCORE] 
+const BOMBTYPE = 16;
+var emojiScore = [10, 10, 5, 5, 1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, 0] 
 
 $(function(){
     //click on start or reset button
@@ -62,8 +63,7 @@ $(function(){
             //send new emoji
             setTimeout(startAction,500);
 
-            // TODO
-            if (score >= MAXSCORE || socre<-0) {
+            if (emojiType == BOMBTYPE) {
                 //game over
                 playing=false;//we are ot playing any more
                 $("#score").hide();
@@ -138,6 +138,18 @@ $(function(){
                   stopAction();//stops Action
               }
           }
+
+          // check if the score is overflow
+          if (score >= MAXSCORE) {
+            //game over
+            playing=false;//we are ot playing any more
+            $("#score").hide();
+            $('#startreset').html('Start Game');
+            $('#gameOver').show();
+            $('#gameOver').html('<p>Game Over!</p><p>Your score is '+ score + '</p>');
+            $('#trialsleft').hide();
+            stopAction();//stops Action
+        }
       },10);
   }
 

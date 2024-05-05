@@ -5,7 +5,11 @@ var step;//for random steps
 var action;//for settime interval
 var audio1 = new Audio("audio/knife1.mp3");
 var audio2 = new Audio("audio/knife2.mp3");
-var emojis = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'];//for emojis
+var emojis = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16'];//for emojis
+var emojiType;
+const MAXSCORE = 999999;
+const EMOJINUM = 16;
+var emojiScore = [10, 10, 5, 5, 1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, -MAXSCORE] 
 
 $(function(){
     //click on start or reset button
@@ -42,12 +46,12 @@ $(function(){
     });
         //slice a emoji
         $("#emoji1").mouseover(function () { 
-            score++;// increase score
+            score += emojiScore[emojiType];// increase score
             $("#scoreValue").html(score);
 
             //play sound
-            if(score % 2) audio1.play();
-            else audio2.play();
+            if(emojiType <= 4) audio2.play();
+            else audio1.play();
 
             //stop emoji
             clearInterval(action);
@@ -57,6 +61,18 @@ $(function(){
 
             //send new emoji
             setTimeout(startAction,500);
+
+            // TODO
+            if (score >= MAXSCORE || socre<-0) {
+                //game over
+                playing=false;//we are ot playing any more
+                $("#score").hide();
+                $('#startreset').html('Start Game');
+                $('#gameOver').show();
+                $('#gameOver').html('<p>Game Over!</p><p>Your score is '+ score + '</p>');
+                $('#trialsleft').hide();
+                stopAction();//stops Action
+            }
         });
      
 
@@ -128,7 +144,8 @@ $(function(){
  
   //choose random emojis
   function chooseRandom(){
-      $('#emoji1').attr('src','images/' + emojis[Math.round(9*Math.random())]+'.png');
+      emojiType = Math.round(15*Math.random());
+      $('#emoji1').attr('src','images/' + emojis[emojiType]+'.png');
   }
 
  

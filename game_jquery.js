@@ -11,7 +11,7 @@ const MAXSCORE = 999999;
 const EMOJINUM = 16;
 const BOMBTYPE = 16;
 var emojiScore = [10, 10, 5, 5, 1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, 0] 
-var emojiColors = ['#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000','#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000'];
+var juiceColors = ['#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000','#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000'];
 
 
 $(function(){

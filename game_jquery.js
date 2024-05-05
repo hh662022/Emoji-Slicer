@@ -11,6 +11,8 @@ const MAXSCORE = 999999;
 const EMOJINUM = 16;
 const BOMBTYPE = 16;
 var emojiScore = [10, 10, 5, 5, 1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, 0] 
+var emojiColors = ['#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000','#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000'];
+
 
 $(function(){
     //click on start or reset button
@@ -59,7 +61,9 @@ $(function(){
 
             //hide emoji
             $('#emoji1').hide("explode",500);//slice emoji
-
+            var juiceColor = juiceColors[emojiType]; // 获取juice颜色
+            
+            showJuice(juiceColor);
             //send new emoji
             setTimeout(startAction,500);
 
@@ -86,6 +90,29 @@ $(function(){
     }
 }
 
+    function showJuice(color) {
+        
+        var juice = $('<div class="juice"></div>').css({
+            'background-color': color,
+            'position': 'absolute',
+            'left': $('#emoji1').offset().left,
+            'top': $('#emoji1').offset().top,
+            'width': '50px', 
+            'height': '50px', 
+            'border-radius': '50%', // 圆形
+            'z-index': '1' // juice位于 emoji 下方
+        });
+    
+        
+        $('body').append(juice);
+    
+        // juice逐渐消失
+        setTimeout(function () {
+            juice.fadeOut(1000, function () {
+               $(this).remove(); 
+            });
+        }, 1000); 
+    }
   //start action
   function startAction(){
       //generate random emoji

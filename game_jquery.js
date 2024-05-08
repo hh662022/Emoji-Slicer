@@ -9,7 +9,7 @@ var emojis = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15',
 var emojiType;
 const MAXSCORE = 999999;
 const EMOJINUM = 16;
-const BOMBTYPE = 16;
+var BOMBTYPE = 15;
 var emojiScore = [10, 10, 5, 5, 1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1, 0] 
 var juiceColors = ["images/splash-brown.png", "images/splash-red.png", "images/splash-red.png","images/splash-red.png","images/splash-yellow.png",
                    "images/splash-yellow.png","images/splash-yellow.png","images/splash-yellow.png","images/splash-yellow.png","images/splash-yellow.png",
@@ -20,6 +20,7 @@ $(function(){
     //click on start or reset button
     $('#front').show();
     $("#startReset").click(function () {
+        // alert("Start!"); // for debug
         if(playing == true){
             //if we are playing
             location.reload();//reload page
@@ -44,42 +45,45 @@ $(function(){
             //change button to reset game
             $('#startReset').html('Reset Game')
     
-            
             //start action
             startAction();
         }
     });
-        //slice a emoji
-        $("#emoji1").mouseover(function () { 
-            score += emojiScore[emojiType];// increase score
-            $("#scoreValue").html(score);
 
-            //play sound
-            if(emojiType <= 4) audio2.play();
-            else audio1.play();
+    //slice a emoji
+    $("#emoji1").mouseover(function () { 
+        console.log(emojiType); // for debug
+        if (emojiType == BOMBTYPE) {
+            //game over
+            // alert("1emojiType == BOMBTYPE"); // for debug
+            playing=false;//we are ot playing any more
+            $("#score").hide();
+            $('#startreset').html('Start Game');
+            $('#gameOver').show();
+            $('#gameOver').html('<p>Game Over!</p><p>Your score is '+ score + '</p>');
+            $('#trialsleft').hide();
+            stopAction();//stops Action
+        }
 
-            //stop emoji
-            clearInterval(action);
+        score += emojiScore[emojiType];// increase score
+        $("#scoreValue").html(score);
 
-            //hide emoji
-            $('#emoji1').hide("explode",500);//slice emoji
-            var juiceColor = juiceColors[emojiType]; // 获取juice颜色
-            
-            showJuice(juiceColor);
-            //send new emoji
-            setTimeout(startAction,500);
+        //play sound
+        if(emojiType <= 4) audio2.play();
+        else audio1.play();
 
-            if (emojiType == BOMBTYPE) {
-                //game over
-                playing=false;//we are ot playing any more
-                $("#score").hide();
-                $('#startreset').html('Start Game');
-                $('#gameOver').show();
-                $('#gameOver').html('<p>Game Over!</p><p>Your score is '+ score + '</p>');
-                $('#trialsleft').hide();
-                stopAction();//stops Action
-            }
-        });
+        //stop emoji
+        clearInterval(action);
+
+        //hide emoji
+        $('#emoji1').hide("explode",500);//slice emoji
+        var juiceColor = juiceColors[emojiType]; // 获取juice颜色
+        
+        showJuice(juiceColor);
+        //send new emoji
+        setTimeout(startAction,500);
+
+    });
      
 
   //functions
@@ -187,7 +191,8 @@ $(function(){
  
   //choose random emojis
   function chooseRandom(){
-      emojiType = Math.round(15*Math.random());
+    //   emojiType = Math.round(15*Math.random());
+      emojiType = Math.round(2*Math.random()) + 13; // Modified to debug Bomb
       $('#emoji1').attr('src','images/' + emojis[emojiType]+'.png');
   }
 
@@ -196,7 +201,7 @@ $(function(){
    function stopAction(){
     clearInterval(action);
     $('#emoji1').hide();
-}
+   }
 
 
 

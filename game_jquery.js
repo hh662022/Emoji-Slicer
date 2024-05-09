@@ -53,7 +53,26 @@ $(function(){
     //slice a emoji
     $("#emoji1").mouseover(function () { 
         console.log(emojiType); // for debug
-        if (emojiType == BOMBTYPE) {
+        if (emojiType != BOMBTYPE) {
+            score += emojiScore[emojiType];// increase score
+            $("#scoreValue").html(score);
+
+            //play sound
+            if(emojiType <= 4) audio2.play();
+            else audio1.play();
+
+            //stop emoji
+            clearInterval(action);
+
+            //hide emoji
+            $('#emoji1').hide("explode",500);//slice emoji
+            var juiceColor = juiceColors[emojiType]; // 获取juice颜色
+            
+            showJuice(juiceColor);
+            //send new emoji
+            setTimeout(startAction,500);
+        }
+        else{
             //game over
             // alert("1emojiType == BOMBTYPE"); // for debug
             playing=false;//we are ot playing any more
@@ -64,25 +83,6 @@ $(function(){
             $('#trialsleft').hide();
             stopAction();//stops Action
         }
-
-        score += emojiScore[emojiType];// increase score
-        $("#scoreValue").html(score);
-
-        //play sound
-        if(emojiType <= 4) audio2.play();
-        else audio1.play();
-
-        //stop emoji
-        clearInterval(action);
-
-        //hide emoji
-        $('#emoji1').hide("explode",500);//slice emoji
-        var juiceColor = juiceColors[emojiType]; // 获取juice颜色
-        
-        showJuice(juiceColor);
-        //send new emoji
-        setTimeout(startAction,500);
-
     });
      
 

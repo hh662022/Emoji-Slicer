@@ -4,7 +4,9 @@ html{
   background-image: url(./images/background.png);
   background-size: cover;
   font-family: cursive, sans-serif;
+  cursor: url(images/cursor.png), default;
 }
+
 #container{
     width: 750px;
     height: 600px;
